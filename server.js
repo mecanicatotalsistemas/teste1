@@ -3,7 +3,7 @@ require('dotenv').config();  // Carrega as variáveis de ambiente do .env
 const express = require('express');
 const { PORT } = require('./config.js');
 const app = express();
-
+app.use('/api', (req, res, next) => { res.set('Access-Control-Allow-Origin', '*'); next(); });
 // Middleware para verificar o token de acesso
 const checkAccessToken = (req, res, next) => {
     const token = req.query.token;  // Token enviado como parâmetro na URL
